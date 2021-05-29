@@ -1,0 +1,42 @@
+<div class="card">
+    <div class="card-header">
+        <h2>Nuevo Registro</h2>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="registerForm" ngNativeValidate >
+            <div class="row p-2">
+                <div class="col">
+                  <input type="text" formControlName="name" class="form-control" placeholder="Nombre" aria-label="First name">
+                </div>
+                <div class="col">
+                  <input type="text"  formControlName="family_name" class="form-control" placeholder="Apellido" aria-label="Last name">
+                </div>
+              </div>
+            <div class="row p-2">
+                <div class="col">
+                  <input type="email"  formControlName="email" class="form-control" placeholder="Correo" aria-label="First name">
+                </div>
+                <div class="col">
+                  <input type="number"  formControlName="phone" class="form-control" placeholder="Telefono" aria-label="Last name">
+                </div>
+              </div>
+            <div class="row p-2">
+                <div class="col">
+                  <select formControlName="program" class="form-control">
+                      <option value="">Seleccione una opción</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <input type="text"  formControlName="comment" class="form-control" placeholder="Comentario" aria-label="Last name">
+                </div>
+            </div>
+            <div class="row p-2">
+                <div class="col">
+                    <button class="btn btn-primary" [disabled]="registerForm.invalid" (click)="save()">
+                        Registrar <i class="fa fa-save"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
