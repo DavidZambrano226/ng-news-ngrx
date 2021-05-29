@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
                 private registerService: RegisterService, 
                 private store: Store<AppState> ) {
     this.registerForm = this.fb.group({
-      name: ["", Validators.required],
+      name: ["", Validators.required,],
       family_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.maxLength(10)]],

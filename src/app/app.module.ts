@@ -12,12 +12,15 @@ import { StoreModule } from '@ngrx/store';
 import { appReducers } from './app.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { DetailsComponent } from './pages/news/details/details.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    NewsComponent
+    NewsComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +28,7 @@ import { environment } from '../environments/environment';
     SharedModule,
     CoreModule,
     ReactiveFormsModule,
+    RouterModule,
     StoreModule.forRoot( appReducers ),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

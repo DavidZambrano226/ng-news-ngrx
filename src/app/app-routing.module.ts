@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterResolver } from './core/resolver/register.resolver';
 import { NewsComponent } from './pages/news/news.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { DetailsComponent } from './pages/news/details/details.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,11 @@ const routes: Routes = [
     path: 'register',
     resolve: [RegisterResolver],
     component: RegisterComponent
+  },
+  {
+    path: 'news/:id',
+    resolve: [RegisterResolver],
+    component: DetailsComponent
   },
   {
     path: '**',

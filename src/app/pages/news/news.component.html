@@ -4,7 +4,7 @@
             <div class="card-body">
               <h5 class="card-title">{{item.title}}</h5>
               <p class="card-text" [innerHtml]="item.body"></p>
-              <a href="#" class="card-link">Ver detalle</a>
+              <a routerLink="/news/{{item.id}}" class="card-link">Ver detalle</a>
             </div>
           </div>
     </div>      
