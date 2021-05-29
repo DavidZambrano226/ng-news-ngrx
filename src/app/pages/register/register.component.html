@@ -3,7 +3,7 @@
         <h2>Nuevo Registro</h2>
     </div>
     <div class="card-body">
-        <form [formGroup]="registerForm" ngNativeValidate >
+        <form [formGroup]="registerForm" (ngSubmit)="save()" ngNativeValidate >
             <div class="row p-2">
                 <div class="col">
                   <input type="text" formControlName="name" class="form-control" placeholder="Nombre" aria-label="First name">
@@ -24,6 +24,7 @@
                 <div class="col">
                   <select formControlName="program" class="form-control">
                       <option value="">Seleccione una opción</option>
+                      <option *ngFor="let option of optPrograms" value="{{option.id}}">{{option.name}}</option>
                   </select>
                 </div>
                 <div class="col">
@@ -32,7 +33,7 @@
             </div>
             <div class="row p-2">
                 <div class="col">
-                    <button class="btn btn-primary" [disabled]="registerForm.invalid" (click)="save()">
+                    <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
                         Registrar <i class="fa fa-save"></i>
                     </button>
                 </div>

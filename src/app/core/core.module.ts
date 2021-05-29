@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterResolver } from './resolver/register.resolver';
 import { HttpClientModule } from '@angular/common/http';
+import { NewsService } from './services/news/news.service';
+import { RegisterService } from './services/register/register.service';
 
 
 
@@ -12,7 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
   ],
   providers: [
-    RegisterResolver
+    RegisterResolver,
+    NewsService,
+    RegisterService
   ]
 })
 export class CoreModule { }

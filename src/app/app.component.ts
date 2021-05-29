@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NewsService } from './core/services/news/news.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-news-redux';
+  constructor(private newsService: NewsService) {
+    this.newsService.getAllNews();
+  }
 }

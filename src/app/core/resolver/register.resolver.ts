@@ -7,19 +7,33 @@ import {
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { IPrograms } from '../../models/programs.model';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducers';
+import * as registerActions from '../../pages/register/register.action';
+import { environment } from '../../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterResolver implements Resolve<IPrograms[]> {
+export class RegisterResolver implements Resolve<boolean> {
 
-  constructor ( private http: HttpClient ) {}
+  see = new Set();
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IPrograms[]> {
-    const url = `https://cms.qailumno.com/servicios/programas`;
-    const response = this.http.get<IPrograms[]>(url);
-    console.log('I am a resolver');
-    console.log(response);
-    return response;
+  constructor ( private http: HttpClient, private store: Store<AppState> ) {}
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+    const url = `${environment.base_api}/programas`;
+    this.http.get<IPrograms[]>(url).subscribe( (data: IPrograms[]) => {
+      const arr = data.filter( (program: IPrograms) => {
+        const duplicate = this.see.has(program.id);
+        this.see.add(program.id);
+        return !duplicate;
+      });
+
+      this.store.dispatch(registerActions.setPrograms({ programs: arr }));
+      return of(true);  
+    })
+    return of(false);
   }
 }
